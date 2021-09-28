@@ -30,7 +30,7 @@
      <attribute name="title">
       <string>Main</string>
      </attribute>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="warehouseButton">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -43,7 +43,7 @@
        <string>Kho</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_2">
+     <widget class="QPushButton" name="carsButton">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -56,7 +56,7 @@
        <string>Đội xe</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_3">
+     <widget class="QPushButton" name="customersButton">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -73,34 +73,31 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>410</y>
-        <width>891</width>
-        <height>243</height>
+        <y>450</y>
+        <width>900</width>
+        <height>201</height>
        </rect>
       </property>
-      <property name="currentIndex">
-       <number>0</number>
-      </property>
-      <widget class="QWidget" name="tab_3">
+      <widget class="QWidget" name="tab_11">
        <attribute name="title">
         <string>Tab 1</string>
        </attribute>
-       <widget class="QTableView" name="tableView">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>900</width>
-          <height>221</height>
-         </rect>
-        </property>
-       </widget>
       </widget>
-      <widget class="QWidget" name="tab_4">
+      <widget class="QWidget" name="tab_12">
        <attribute name="title">
         <string>Tab 2</string>
        </attribute>
       </widget>
+     </widget>
+     <widget class="QTableWidget" name="tableWidget">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>30</y>
+        <width>731</width>
+        <height>401</height>
+       </rect>
+      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="tab_2">
