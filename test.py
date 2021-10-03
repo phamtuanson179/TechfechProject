@@ -1,7 +1,6 @@
-
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'Qt-tech-fech.ui'
+# Form implementation generated from reading ui file 'qt-tech-fech.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -10,12 +9,12 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-import pandas as pd
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(892, 700)
+        MainWindow.resize(897, 640)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.tabWidget = QtWidgets.QTabWidget(self.centralwidget)
@@ -23,12 +22,9 @@ class Ui_MainWindow(object):
         self.tabWidget.setObjectName("tabWidget")
         self.tab = QtWidgets.QWidget()
         self.tab.setObjectName("tab")
-
         self.warehouseButton = QtWidgets.QPushButton(self.tab)
         self.warehouseButton.setGeometry(QtCore.QRect(0, 120, 101, 41))
         self.warehouseButton.setObjectName("warehouseButton")
-        self.warehouseButton.clicked.connect(lambda _, xl_path = excel_file_path, sheet_name = worksheet_name: self.loadExcelDatas(xl_path, sheet_name))
-
         self.carsButton = QtWidgets.QPushButton(self.tab)
         self.carsButton.setGeometry(QtCore.QRect(0, 190, 101, 41))
         self.carsButton.setObjectName("carsButton")
@@ -44,6 +40,14 @@ class Ui_MainWindow(object):
         self.tab_12 = QtWidgets.QWidget()
         self.tab_12.setObjectName("tab_12")
         self.tabWidget_2.addTab(self.tab_12, "")
+        self.tableWidget = QtWidgets.QTableWidget(self.tab)
+        self.tableWidget.setGeometry(QtCore.QRect(100, 30, 731, 401))
+        self.tableWidget.setObjectName("tableWidget")
+        self.tableWidget.setColumnCount(0)
+        self.tableWidget.setRowCount(0)
+        self.lineEdit = QtWidgets.QLineEdit(self.tab)
+        self.lineEdit.setGeometry(QtCore.QRect(300, 120, 113, 20))
+        self.lineEdit.setObjectName("lineEdit")
         self.tabWidget.addTab(self.tab, "")
         self.tab_2 = QtWidgets.QWidget()
         self.tab_2.setObjectName("tab_2")
@@ -57,7 +61,6 @@ class Ui_MainWindow(object):
         self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
@@ -66,26 +69,16 @@ class Ui_MainWindow(object):
         self.customersButton.setText(_translate("MainWindow", "Khách hàng"))
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_11), _translate("MainWindow", "Tab 1"))
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_12), _translate("MainWindow", "Tab 2"))
+        self.lineEdit.setText(_translate("MainWindow", "sdfsdf"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("MainWindow", "Main"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "Help"))
 
-    def loadExcelDatas(self, excel_file_dir, worksheet_name):
-        df = pd.read_excel(excel_file_dir, worksheet_name)
-        if df.size == 0:
-            return
-        df.fillna('', inplace=True)
-        self.table.setRowCount(df.shape[0])
-        self.table.setColumnCount(df.shape[1])
-        self.table.setHorizontalHeaderLabels(df.columns)
 
 if __name__ == "__main__":
     import sys
-    excel_file_path = 'testExcel.xlsx'
-    worksheet_name = 'test'
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
-

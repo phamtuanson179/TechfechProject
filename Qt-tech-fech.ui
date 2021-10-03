@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>892</width>
-    <height>700</height>
+    <width>897</width>
+    <height>640</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -92,11 +92,24 @@
      <widget class="QTableWidget" name="tableWidget">
       <property name="geometry">
        <rect>
-        <x>120</x>
+        <x>100</x>
         <y>30</y>
         <width>731</width>
         <height>401</height>
        </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>120</y>
+        <width>113</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>sdfsdf</string>
       </property>
      </widget>
     </widget>
