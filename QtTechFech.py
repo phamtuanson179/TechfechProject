@@ -38,14 +38,15 @@ class Ui_MainWindow(object):
 
         # set depotButton
         self.depotButton = QtWidgets.QPushButton(self.tabMain)
-        self.depotButton.setGeometry(QtCore.QRect(0, 120, 100, 40))
+        self.depotButton.setGeometry(QtCore.QRect(10, 10, 25, 25))
         self.depotButton.setObjectName("depotButton")
-        self.depotButton.setText("Depots")
+        # self.depotButton.setText("Depots")
+        self.depotButton.setIcon(QtGui.QIcon('./icon/depots.png'))
         self.depotButton.clicked.connect(self.loadExcelDepotDatas)
 
         # set table depot
         self.tableWidgetDepot = QtWidgets.QTableWidget(self.tabMain)
-        self.tableWidgetDepot.setGeometry(QtCore.QRect(120, 30, 500, 401))
+        self.tableWidgetDepot.setGeometry(QtCore.QRect(190, 30, 600, 400))
         self.tableWidgetDepot.setObjectName("tableWidgetOptimal")
         self.tableWidgetDepot.setVisible(False)
 
@@ -66,15 +67,15 @@ class Ui_MainWindow(object):
 
         # set customerButton
         self.customersButton = QtWidgets.QPushButton(self.tabMain)
-        self.customersButton.setGeometry(QtCore.QRect(0, 180, 100, 40))
+        self.customersButton.setGeometry(QtCore.QRect(40, 10, 25, 25))
         self.customersButton.setObjectName("customersButton")
-        self.customersButton.setText('Customers')
+        self.customersButton.setIcon(QtGui.QIcon('./icon/customers.png'))
         self.customersButton.clicked.connect(self.loadExcelCustomerDatas)
 
 
         # set table customer
         self.tableWidgetCustomer = QtWidgets.QTableWidget(self.tabMain)
-        self.tableWidgetCustomer.setGeometry(QtCore.QRect(120, 30, 500, 401))
+        self.tableWidgetCustomer.setGeometry(QtCore.QRect(190, 30, 600, 400))
         self.tableWidgetCustomer.setObjectName("tableWidgetOptimal")
         self.tableWidgetCustomer.setVisible(False)
 
@@ -97,15 +98,15 @@ class Ui_MainWindow(object):
 
         #set carButton
         self.carsButton = QtWidgets.QPushButton(self.tabMain)
-        self.carsButton.setGeometry(QtCore.QRect(0, 240, 100, 40))
+        self.carsButton.setGeometry(QtCore.QRect(70, 10, 25, 25))
         self.carsButton.setObjectName("carsButton")
-        self.carsButton.setText("Cars")
+        self.carsButton.setIcon(QtGui.QIcon('./icon/cars.png'))
         self.carsButton.clicked.connect(self.loadExcelCarsDatas)
 
 
         # set table car
         self.tableWidgetCar = QtWidgets.QTableWidget(self.tabMain)
-        self.tableWidgetCar.setGeometry(QtCore.QRect(120, 30, 500, 410))
+        self.tableWidgetCar.setGeometry(QtCore.QRect(190, 30, 600, 400))
         self.tableWidgetCar.setObjectName("tableWidgetOptimal")
         self.tableWidgetCar.setVisible(False)
 
@@ -127,9 +128,24 @@ class Ui_MainWindow(object):
         # self.buttonAddCarData.setIcon(QtGui.QIcon('./icon/add.png'))
         # self.buttonAddCarData.clicked.connect(self.addCarData)
 
+        # set button add customer data to optimal
+        self.buttonAddOptimalCustomer = QtWidgets.QPushButton(self.tabMain)
+        self.buttonAddOptimalCustomer.setGeometry(QtCore.QRect(10, 150, 85, 85))
+        self.buttonAddOptimalCustomer.setObjectName('buttonAddOptimalCustomer')
+        self.buttonAddOptimalCustomer.setText('Add customer')
+        self.buttonAddOptimalCustomer.clicked.connect(self.addCustomerToOptimal)
+
+        # set
+        self.buttonChangeOptimalDepot = QtWidgets.QPushButton(self.tabMain)
+        self.buttonChangeOptimalDepot.setGeometry(QtCore.QRect(10, 230, 85, 40))
+        self.buttonChangeOptimalDepot.setObjectName('buttonChangeOptimalDepot')
+        self.buttonChangeOptimalDepot.setText('Change depot')
+        self.buttonChangeOptimalDepot.clicked.connect(self.changeDepotToOptimal)
+
+
         #set tab widget config
         self.tabWidgetConfig = QtWidgets.QTabWidget(self.tabMain)
-        self.tabWidgetConfig.setGeometry(QtCore.QRect(0, 450, 900, 201))
+        self.tabWidgetConfig.setGeometry(QtCore.QRect(0, 450, 900, 200))
         self.tabWidgetConfig.setObjectName("tabConfig")
 
         #set tab optimal
@@ -138,11 +154,37 @@ class Ui_MainWindow(object):
         self.tabWidgetConfig.addTab(self.tabOptimal, "")
         self.tabWidgetConfig.setTabText(self.tabWidgetConfig.indexOf(self.tabOptimal), "Optimal")
 
+
+        # set table Optimal
+        self.tableWidgetOptimal = QtWidgets.QTableWidget(self.tabOptimal)
+        self.tableWidgetOptimal.setGeometry(QtCore.QRect(5, 10, 700, 200))
+        self.tableWidgetOptimal.setObjectName("tableWidgetOptimal")
+        self.tableWidgetOptimal.setColumnCount(6)
+        self.tableWidgetOptimal.setRowCount(3)
+        self.tableWidgetOptimal.setHorizontalHeaderLabels(['ID','Depot','Customer','Open Time','Close Time','Need'])
+        self.tableWidgetOptimal.setStyleSheet('border:0')
+
+        #set button Optimal
+        self.buttonOptimal = QtWidgets.QPushButton(self.tabOptimal)
+        self.buttonOptimal.setGeometry(QtCore.QRect(740, 70 , 50, 50))
+        self.buttonOptimal.setObjectName("buttonOptimal")
+        self.buttonOptimal.setIcon(QtGui.QIcon('./icon/optimal.png'))
+        self.buttonOptimal.setIconSize(QtCore.QSize(40,40))
+        self.buttonOptimal.clicked.connect(self.showResult)
+        # self.buttonOptimal.setStyleSheet('border: 0')
+
+
         #set result
         self.tabResult = QtWidgets.QWidget()
         self.tabResult.setObjectName("tabResult")
         self.tabWidgetConfig.addTab(self.tabResult, "")
         self.tabWidgetConfig.setTabText(self.tabWidgetConfig.indexOf(self.tabResult), "Result")
+
+        self.lableResult = QtWidgets.QLabel('Result',self.tabResult)
+        self.lableResult.setGeometry(QtCore.QRect(300, 70 , 50, 50))
+
+        # self.tabWidgetConfig.set
+
 
         #set tab help
         self.tabHelp = QtWidgets.QWidget()
@@ -193,8 +235,6 @@ class Ui_MainWindow(object):
             self.customersButton.setStyleSheet('background-color: #4285f4; color: #ffffff; border: 0')
         else:
             self.customersButton.setStyleSheet('background-color: #ffffff, color: #000000')
-
-
 
     def loadExcelDepotDatas(self):
         self.setVisibleDepotData(True)
@@ -261,7 +301,7 @@ class Ui_MainWindow(object):
                 # value = '{0:0,.0f}'.format(value)
                 tableItem = QtWidgets.QTableWidgetItem(str(value))
                 self.tableWidgetCustomer.setItem(row[0], col_index, tableItem)
-    #
+
     # def addDepotData(self):
     #     self.dialogAddDepotData = QtWidgets.QDialog(self.tabMain)
     #     self.dialogAddDepotData.setWindowTitle('Add Depot Data')
@@ -348,6 +388,59 @@ class Ui_MainWindow(object):
     #     self.inputWeightCar.setGeometry(QtCore.QRect(90, 60, 100, 20))
     #
     #     self.dialogAddCarData.exec()
+
+    def addCustomerToOptimal(self):
+        self.dialogAddCustomerToOptimal = QtWidgets.QDialog(self.tabMain)
+        self.dialogAddCustomerToOptimal.setWindowTitle('Add Customer')
+        self.dialogAddCustomerToOptimal.setFixedSize(QtCore.QSize(240, 100))
+
+        buttonCancel = QtWidgets.QPushButton('Cancel', self.dialogAddCustomerToOptimal)
+        buttonCancel.setGeometry(QtCore.QRect(90, 70, 40, 20))
+        buttonCancel.setStyleSheet('border: 1px solid #000000')
+
+        buttonOk = QtWidgets.QPushButton('Ok', self.dialogAddCustomerToOptimal)
+        buttonOk.setGeometry(QtCore.QRect(140, 70, 30, 20))
+        buttonOk.setStyleSheet('background-color: #4285f4; color: #ffffff; border: 0')
+
+        self.lableNameCustomer = QtWidgets.QLabel('Customer: ', self.dialogAddCustomerToOptimal)
+        self.lableNameCustomer.setGeometry(QtCore.QRect(20, 10, 40, 20))
+        self.comboboxNameCustomer = QtWidgets.QComboBox(self.dialogAddCustomerToOptimal)
+        self.comboboxNameCustomer.setGeometry(QtCore.QRect(90, 10, 100, 20))
+        self.comboboxNameCustomer.addItems(['khach hang 1','khach hang 2','khach hang 3'])
+
+
+        self.lableWeight = QtWidgets.QLabel('Weight : ', self.dialogAddCustomerToOptimal)
+        self.lableWeight.setGeometry(QtCore.QRect(20, 35, 40, 20))
+        self.spinboxWeight = QtWidgets.QSpinBox(self.dialogAddCustomerToOptimal,maximum=5000, minimum=0, singleStep= 500, suffix=' g')
+        self.spinboxWeight.setGeometry(QtCore.QRect(90, 35, 100, 20))
+
+        self.dialogAddCustomerToOptimal.exec()
+
+    def changeDepotToOptimal(self):
+        self.dialogChangeDepotToOptimal = QtWidgets.QDialog(self.tabMain)
+        self.dialogChangeDepotToOptimal.setWindowTitle('Chance Depot')
+        self.dialogChangeDepotToOptimal.setFixedSize(QtCore.QSize(240, 80))
+
+        buttonCancel = QtWidgets.QPushButton('Cancel', self.dialogChangeDepotToOptimal)
+        buttonCancel.setGeometry(QtCore.QRect(90, 45, 40, 20))
+        buttonCancel.setStyleSheet('border: 1px solid #000000')
+
+        buttonOk = QtWidgets.QPushButton('Ok', self.dialogChangeDepotToOptimal)
+        buttonOk.setGeometry(QtCore.QRect(140, 45, 30, 20))
+        buttonOk.setStyleSheet('background-color: #4285f4; color: #ffffff; border: 0')
+
+        lableNameDepot = QtWidgets.QLabel('Depot: ', self.dialogChangeDepotToOptimal)
+        lableNameDepot.setGeometry(QtCore.QRect(20, 10, 40, 20))
+        comboboxNameDepot = QtWidgets.QComboBox(self.dialogChangeDepotToOptimal)
+        comboboxNameDepot.setGeometry(QtCore.QRect(90, 10, 100, 20))
+        comboboxNameDepot.addItems(['Kho 1', 'Kho 2', 'Kho 3'])
+
+
+        self.dialogChangeDepotToOptimal.exec()
+
+
+    def showResult(self):
+        self.tabWidgetConfig.setCurrentWidget(self.tabResult)
 
     # def openExcelCarData(self):
     #     fileExcelCarData = tkinter.filedialog.askopenfilename(initialdir = "/",
